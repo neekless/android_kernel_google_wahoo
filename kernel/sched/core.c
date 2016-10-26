@@ -7910,6 +7910,9 @@ void __init sched_init(void)
         for (i = 0; i < WAIT_TABLE_SIZE; i++)
                 init_waitqueue_head(bit_wait_table + i);
 
+        for (i = 0; i < WAIT_TABLE_SIZE; i++)
+                init_waitqueue_head(bit_wait_table + i);
+
 #ifdef CONFIG_FAIR_GROUP_SCHED
 	alloc_size += 2 * nr_cpu_ids * sizeof(void **);
 #endif
