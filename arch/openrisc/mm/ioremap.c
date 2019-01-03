@@ -116,8 +116,7 @@ void iounmap(void *addr)
  * the memblock infrastructure.
  */
 
-pte_t __init_refok *pte_alloc_one_kernel(struct mm_struct *mm,
-					 unsigned long address)
+pte_t __init_refok *pte_alloc_one_kernel(struct mm_struct *mm)
 {
 	pte_t *pte;
 

@@ -730,7 +730,7 @@ static int __do_huge_pmd_anonymous_page(struct mm_struct *mm,
 		return VM_FAULT_FALLBACK;
 	}
 
-	pgtable = pte_alloc_one(mm, haddr);
+	pgtable = pte_alloc_one(mm);
 	if (unlikely(!pgtable)) {
 		mem_cgroup_cancel_charge(page, memcg);
 		put_page(page);
@@ -825,7 +825,7 @@ int do_huge_pmd_anonymous_page(struct mm_struct *mm, struct vm_area_struct *vma,
 		pgtable_t pgtable;
 		struct page *zero_page;
 		int ret;
-		pgtable = pte_alloc_one(mm, haddr);
+		pgtable = pte_alloc_one(mm);
 		if (unlikely(!pgtable))
 			return VM_FAULT_OOM;
 		zero_page = get_huge_zero_page();
@@ -921,7 +921,7 @@ int copy_huge_pmd(struct mm_struct *dst_mm, struct mm_struct *src_mm,
 	int ret;
 
 	ret = -ENOMEM;
-	pgtable = pte_alloc_one(dst_mm, addr);
+	pgtable = pte_alloc_one(dst_mm);
 	if (unlikely(!pgtable))
 		goto out;
 

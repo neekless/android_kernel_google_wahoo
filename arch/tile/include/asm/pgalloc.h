@@ -86,7 +86,7 @@ static inline void pte_free(struct mm_struct *mm, struct page *pte)
 #define pmd_pgtable(pmd) pmd_page(pmd)
 
 static inline pte_t *
-pte_alloc_one_kernel(struct mm_struct *mm, unsigned long address)
+pte_alloc_one_kernel(struct mm_struct *mm)
 {
 	return pfn_to_kaddr(page_to_pfn(pte_alloc_one(mm, address)));
 }
