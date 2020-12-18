@@ -412,7 +412,7 @@ static bool fg_sram_dump;
 
 static int fg_get_battery_current(struct fg_chip *chip, int *val);
 
-#define FG_RATE_LIM_MS (2 * MSEC_PER_SEC)
+#define FG_RATE_LIM_MS (120 * MSEC_PER_SEC)
 
 /* All getters HERE */
 
