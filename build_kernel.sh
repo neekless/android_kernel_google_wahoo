@@ -9,9 +9,8 @@ git submodule init && git submodule update
 cd "$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 make clean -j$(nproc --all) && make mrproper -j$(nproc --all)
 make wahoo_defconfig -j$(nproc --all)
-make -j$(nproc --all) Image.lz4-dtb dtbo.img
+make -j$(nproc --all) Image.lz4-dtb
 
 cp out/arch/arm64/boot/Image.lz4-dtb $ak/Image.lz4-dtb
-cp out/arch/arm64/boot/dtbo.img $ak/dtbo.img
 cd $ak
 zip -FSr9 $ak/kernel.zip ./*
