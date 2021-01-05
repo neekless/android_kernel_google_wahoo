@@ -311,7 +311,7 @@ static void wdsp_glink_notify_state(void *handle, const void *priv,
 	mutex_lock(&ch->mutex);
 	ch->channel_state = event;
 	if (event == GLINK_CONNECTED) {
-		dev_info(wpriv->dev, "%s: glink channel: %s connected\n",
+		dev_dbg(wpriv->dev, "%s: glink channel: %s connected\n",
 			__func__, ch->ch_cfg.name);
 
 		for (i = 0; i < ch->ch_cfg.no_of_intents; i++) {
