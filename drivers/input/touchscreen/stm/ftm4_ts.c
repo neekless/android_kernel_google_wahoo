@@ -2471,7 +2471,7 @@ static int fts_suspend(struct i2c_client *client, pm_message_t mesg)
 {
 	struct fts_ts_info *info = i2c_get_clientdata(client);
 
-	tsp_debug_info(&info->client->dev, "%s power state : %d\n",
+	tsp_debug_dbg(&info->client->dev, "%s power state : %d\n",
 			__func__, info->fts_power_state);
 	/* if suspend is called from non-active state, the i2c bus is not
 	 * switched to AP, skipping suspend routine */
@@ -2497,7 +2497,7 @@ static int fts_resume(struct i2c_client *client)
 {
 	struct fts_ts_info *info = i2c_get_clientdata(client);
 
-	tsp_debug_info(&info->client->dev, "%s power state : %d\n",
+	tsp_debug_dbg(&info->client->dev, "%s power state : %d\n",
 			__func__, info->fts_power_state);
 	/* if resume is called from active state, the i2c bus is not
 	 * switched to AP, skipping resume routine */
