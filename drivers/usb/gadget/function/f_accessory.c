@@ -645,6 +645,8 @@ static ssize_t acc_read(struct file *fp, char __user *buf,
 	if (count > acc_rx_req_len)
 		count = acc_rx_req_len;
 
+	len = ALIGN(count, dev->ep_out->maxpacket);
+
 	/* we will block until we're online */
 	pr_debug("acc_read: waiting for online\n");
 	ret = wait_event_interruptible(dev->read_wq, dev->online);
@@ -652,8 +654,6 @@ static ssize_t acc_read(struct file *fp, char __user *buf,
 		r = ret;
 		goto done;
 	}
-
-	len = ALIGN(count, dev->ep_out->maxpacket);
 
 	if (dev->rx_done) {
 		// last req cancelled. try to get it.
