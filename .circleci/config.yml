@@ -7,6 +7,8 @@ jobs:
       - run:
           command: |
            sudo apt update && sudo apt install git bc flex gcc-10 glibc-source zip lz4 -y
+           which gcc-10
+           which gcc
            cd;
            git clone https://github.com/Kaz205/android_kernel_google_wahoo -b build --depth=1 -j$(nproc --all)
            git clone https://github.com/Kaz205/arm-none-eabi-gcc --depth=1 -j$(nproc --all)
