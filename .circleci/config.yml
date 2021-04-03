@@ -11,8 +11,8 @@ jobs:
            gcc --version
            cd;
            git clone https://github.com/Kaz205/android_kernel_google_wahoo -b build --depth=1 -j$(nproc --all)
-           git clone https://github.com/Kaz205/arm-none-eabi-gcc --depth=1 -j$(nproc --all)
-           git clone https://github.com/Kaz205/aarch64-linux-gnu-gcc --depth=1 -j$(nproc --all)
+           git clone https://github.com/Kaz205/arm-none-eabi-gcc -b working --depth=1 -j$(nproc --all)
+           git clone https://github.com/Kaz205/aarch64-linux-gnu-gcc -b working --depth=1 -j$(nproc --all)
            git clone https://github.com/Kaz205/AnyKernel3 --depth=1 -j$(nproc --all)
            cd android_kernel_google_wahoo
            ./build_kernel.sh
