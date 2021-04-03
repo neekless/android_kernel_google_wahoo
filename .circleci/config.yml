@@ -1,12 +1,12 @@
 version: 2.1
 jobs:
   compile:
-   docker:
-      - image: archlinux/base
+   machine:
+     image: ubuntu-2004:202010-01
    steps:
       - run:
           command: |
-           pacman -Sy && pacman -S git bc base-devel pahole glibc zip inetutils --needed --noconfirm
+           sudo apt update && sudo apt install git bc flex gcc-10 glibc-source zip lz4 -y
            cd;
            git clone https://github.com/Kaz205/android_kernel_google_wahoo -b build --depth=1 -j$(nproc --all)
            git clone https://github.com/Kaz205/arm-none-eabi-gcc --depth=1 -j$(nproc --all)
@@ -14,12 +14,12 @@ jobs:
            git clone https://github.com/Kaz205/AnyKernel3 --depth=1 -j$(nproc --all)
            cd android_kernel_google_wahoo
            ./build_kernel.sh
-           mkdir /root/project/out
-           cp ~/AnyKernel3/kernel.zip /root/project/out/kernel.zip
+           mkdir ~/out
+           cp ~/AnyKernel3/kernel.zip ~/out/kernel.zip
           no_output_timeout: 10h
 
       - store_artifacts:
-          path: /root/project/out
+          path: ~/out
 workflows:
   version: 2.1
   cooking:
